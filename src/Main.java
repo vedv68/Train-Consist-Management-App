@@ -87,5 +87,25 @@ public class Main {
         // Final consist
         System.out.println("\nFinal Ordered Train Consist:");
         System.out.println(consist);
+
+
+        // ===== UC5 =====
+
+        System.out.println("\n=== UC5: Train Formation Using LinkedHashSet ===");
+
+        // Create LinkedHashSet for ordered + unique bogies
+        LinkedHashSet<String> formation = new LinkedHashSet<>();
+
+        // Add bogies
+        formation.add("Engine");
+        formation.add("Sleeper");
+        formation.add("Cargo");
+        formation.add("Guard");
+
+        // Attempt to add duplicate
+        formation.add("Sleeper"); // duplicate (will be ignored)
+
+        System.out.println("\nFinal Train Formation (Insertion Order Preserved, No Duplicates):");
+        System.out.println(formation);
     }
 }
