@@ -1,11 +1,13 @@
 import java.util.ArrayList;
 import java.util.List;
+import java.util.HashSet;
+import java.util.Set;
 
 public class Main {
 
     public static void main(String[] args) {
 
-        // ===== UC1 (KEEP THIS) =====
+        // ===== UC1 =====
         System.out.println("=== Train Consist Management App ===");
 
         List<String> trainConsist = new ArrayList<>();
@@ -14,12 +16,9 @@ public class Main {
         System.out.println("Initial bogie count: " + trainConsist.size());
 
 
-        // ===== UC2 STARTS HERE =====
-
-        // Create passenger bogie list
+        // ===== UC2 =====
         List<String> passengerBogies = new ArrayList<>();
 
-        // Add bogies
         passengerBogies.add("Sleeper");
         passengerBogies.add("AC Chair");
         passengerBogies.add("First Class");
@@ -27,22 +26,33 @@ public class Main {
         System.out.println("\nPassenger Bogies after addition:");
         System.out.println(passengerBogies);
 
-        // Remove one bogie
         passengerBogies.remove("AC Chair");
 
         System.out.println("\nAfter removing AC Chair:");
         System.out.println(passengerBogies);
 
-        // Check existence
         if (passengerBogies.contains("Sleeper")) {
             System.out.println("\nSleeper bogie exists in the train.");
-        } else {
-            System.out.println("\nSleeper bogie not found.");
         }
 
-        // Final state
         System.out.println("\nFinal Passenger Bogie List:");
         System.out.println(passengerBogies);
+
+
+        // ===== UC3 STARTS HERE =====
+
+        // Create HashSet for unique bogie IDs
+        Set<String> bogieIds = new HashSet<>();
+
+        // Add bogie IDs (with duplicates intentionally)
+        bogieIds.add("BG101");
+        bogieIds.add("BG102");
+        bogieIds.add("BG103");
+        bogieIds.add("BG101"); // duplicate
+        bogieIds.add("BG102"); // duplicate
+
+        System.out.println("\nBogie IDs (duplicates automatically removed):");
+        System.out.println(bogieIds);
 
         // Program continues...
     }
