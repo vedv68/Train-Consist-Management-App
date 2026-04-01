@@ -236,4 +236,30 @@ if (groupedBogies.isEmpty()) {
         } else {
             System.out.println("Train is NOT SAFE. Invalid cargo detected.");
         }
+
+//===== UC13 =====
+        System.out.println("\n=== UC13: Performance Comparison (Loops vs Streams) ===");
+        List<Bogie> testBogies = new ArrayList<>();
+        for (int i = 0; i < 10000; i++) {
+            testBogies.add(new Bogie("Sleeper", 50 + (i % 50)));
+        }
+        long startLoop = System.nanoTime();
+        List<Bogie> loopResult = new ArrayList<>();
+        for (Bogie b : testBogies) {
+            if (b.getCapacity() > 60) {
+                loopResult.add(b);
+            }
+        }
+        long endLoop = System.nanoTime();
+        long loopTime = endLoop - startLoop;
+        long startStream = System.nanoTime();
+        List<Bogie> streamResult = testBogies.stream()
+                .filter(b -> b.getCapacity() > 60)
+                .toList();
+        long endStream = System.nanoTime();
+        long streamTime = endStream - startStream;
+        System.out.println("\nLoop Filtering Time (ns): " + loopTime);
+        System.out.println("Stream Filtering Time (ns): " + streamTime);
+        System.out.println("Loop Result Size: " + loopResult.size());
+        System.out.println("Stream Result Size: " + streamResult.size());
     }}
