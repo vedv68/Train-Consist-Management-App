@@ -200,4 +200,40 @@ if (groupedBogies.isEmpty()) {
         } else {
             System.out.println("Invalid Cargo Code: " + cargoCode);
         }
+
+//===== UC12 =====
+        System.out.println("\n=== UC12: Safety Compliance Check for Goods Bogies ===");
+
+        class GoodsBogie {
+            private String type;
+            private String cargo;
+
+            public GoodsBogie(String type, String cargo) {
+                this.type = type;
+                this.cargo = cargo;
+            }
+
+            public String getType() {
+                return type;
+            }
+
+            public String getCargo() {
+                return cargo;
+            }
+        }
+
+        List<GoodsBogie> goodsBogies = new ArrayList<>();
+        goodsBogies.add(new GoodsBogie("Cylindrical", "Petroleum"));
+        goodsBogies.add(new GoodsBogie("Open", "Coal"));
+        goodsBogies.add(new GoodsBogie("Box", "Grain"));
+
+        boolean isSafe = goodsBogies.stream()
+                .allMatch(g -> !g.getType().equalsIgnoreCase("Cylindrical")
+                        || g.getCargo().equalsIgnoreCase("Petroleum"));
+
+        if (isSafe) {
+            System.out.println("Train is SAFETY COMPLIANT.");
+        } else {
+            System.out.println("Train is NOT SAFE. Invalid cargo detected.");
+        }
     }}
