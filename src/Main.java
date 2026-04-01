@@ -262,4 +262,44 @@ if (groupedBogies.isEmpty()) {
         System.out.println("Stream Filtering Time (ns): " + streamTime);
         System.out.println("Loop Result Size: " + loopResult.size());
         System.out.println("Stream Result Size: " + streamResult.size());
-    }}
+
+
+//===== UC14 =====
+        System.out.println("\n=== UC14: Handle Invalid Bogie Capacity (Custom Exception) ===");
+        class InvalidCapacityException extends Exception {
+            public InvalidCapacityException(String message) {
+                super(message);
+            }
+        }
+        class PassengerBogie {
+            private String type;
+            private int capacity;
+
+            public PassengerBogie(String type, int capacity) throws InvalidCapacityException {
+                if (capacity <= 0) {
+                    throw new InvalidCapacityException("Capacity must be greater than zero");
+                }
+                this.type = type;
+                this.capacity = capacity;
+            }
+
+            public String getType() {
+                return type;
+            }
+
+            public int getCapacity() {
+                return capacity;
+            }
+        }
+        try {
+            PassengerBogie p1 = new PassengerBogie("Sleeper", 72);
+            System.out.println(p1.getType() + " created with capacity " + p1.getCapacity());
+
+            PassengerBogie p2 = new PassengerBogie("AC Chair", 0);
+            System.out.println(p2.getType() + " created with capacity " + p2.getCapacity());
+
+        } catch (InvalidCapacityException e) {
+            System.out.println("Error: " + e.getMessage());
+        }
+    }
+}
