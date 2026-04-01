@@ -144,7 +144,25 @@ public class Main {
         } else {
             for (Bogie b : filteredBogies) {
                 System.out.println(b.getName() + " -> Capacity: " + b.getCapacity());
-            }
+            }    }
+
+
+
+//===== UC9 =====
+System.out.println("\n=== UC9: Group Bogies by Type (Collectors.groupingBy) ===");
+
+Map<String, List<Bogie>> groupedBogies = bogies.stream()
+        .collect(java.util.stream.Collectors.groupingBy(Bogie::getName));
+
+System.out.println("\nGrouped Bogies:");
+
+if (groupedBogies.isEmpty()) {
+        System.out.println("No bogies available for grouping.");
+} else {
+        for (Map.Entry<String, List<Bogie>> entry : groupedBogies.entrySet()) {
+        System.out.println("\nType: " + entry.getKey());
+        for (Bogie b : entry.getValue()) {
+        System.out.println("  " + b.getName() + " -> Capacity: " + b.getCapacity());
         }
-    }
-}
+        }
+        }}}
