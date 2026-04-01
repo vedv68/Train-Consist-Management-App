@@ -165,4 +165,14 @@ if (groupedBogies.isEmpty()) {
         System.out.println("  " + b.getName() + " -> Capacity: " + b.getCapacity());
         }
         }
-        }}}
+        }
+
+        //===== UC10 =====
+        System.out.println("\n=== UC10: Count Total Seats in Train (reduce) ===");
+
+        int totalSeats = bogies.stream()
+                .map(b -> b.getCapacity())
+                .reduce(0, Integer::sum);
+
+        System.out.println("\nTotal Seating Capacity of Train: " + totalSeats);
+    }}
