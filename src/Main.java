@@ -301,5 +301,45 @@ if (groupedBogies.isEmpty()) {
         } catch (InvalidCapacityException e) {
             System.out.println("Error: " + e.getMessage());
         }
+//===== UC15 =====
+        System.out.println("\n=== UC15: Safe Cargo Assignment Using try-catch-finally ===");
+        class CargoSafetyException extends RuntimeException {
+            public CargoSafetyException(String message) {
+                super(message);
+            }
+        }
+        class SafeGoodsBogie {
+            private String type;
+            private String cargo;
+            public SafeGoodsBogie(String type) {
+                this.type = type;
+            }
+            public void assignCargo(String cargo) {
+                try {
+                    System.out.println("\nAttempting to assign " + cargo + " to " + type + " bogie...");
+                    if (type.equalsIgnoreCase("Rectangular") && cargo.equalsIgnoreCase("Petroleum")) {
+                        throw new CargoSafetyException("Unsafe Cargo! Petroleum cannot be assigned to Rectangular bogie.");
+                    }
+                    this.cargo = cargo;
+                    System.out.println("Cargo assigned successfully: " + cargo);
+
+                } catch (CargoSafetyException e) {
+                    System.out.println("Error: " + e.getMessage());
+
+                } finally {
+                    System.out.println("Assignment attempt completed for bogie type: " + type);
+                }
+            }
+            public String getCargo() {
+                return cargo;
+            }
+        }
+        SafeGoodsBogie b1 = new SafeGoodsBogie("Cylindrical");
+        b1.assignCargo("Petroleum");
+        SafeGoodsBogie b2 = new SafeGoodsBogie("Rectangular");
+        b2.assignCargo("Petroleum");
+        SafeGoodsBogie b3 = new SafeGoodsBogie("Rectangular");
+        b3.assignCargo("Coal");
+        System.out.println("\nProgram continues after handling exceptions successfully.");
     }
 }
