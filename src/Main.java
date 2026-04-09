@@ -341,5 +341,32 @@ if (groupedBogies.isEmpty()) {
         SafeGoodsBogie b3 = new SafeGoodsBogie("Rectangular");
         b3.assignCargo("Coal");
         System.out.println("\nProgram continues after handling exceptions successfully.");
+//===== UC16 =====
+        System.out.println("\n=== UC16: Sort Passenger Bogies by Capacity (Bubble Sort) ===");
+
+        int[] capacities = {72, 56, 24, 70, 60};
+
+        System.out.println("\nOriginal Capacities:");
+        for (int c : capacities) {
+            System.out.print(c + " ");
+        }
+
+        int n = capacities.length;
+
+        for (int i = 0; i < n - 1; i++) {
+            for (int j = 0; j < n - i - 1; j++) {
+                if (capacities[j] > capacities[j + 1]) {
+                    int temp = capacities[j];
+                    capacities[j] = capacities[j + 1];
+                    capacities[j + 1] = temp;
+                }
+            }
+        }
+
+        System.out.println("\n\nSorted Capacities (Ascending):");
+        for (int c : capacities) {
+            System.out.print(c + " ");
+        }
+
     }
 }
