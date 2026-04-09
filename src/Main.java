@@ -402,6 +402,35 @@ if (groupedBogies.isEmpty()) {
             System.out.println("Bogie ID not found.");
         }
 
+//===== UC19 =====
+        System.out.println("\n=== UC19: Binary Search for Bogie ID ===");
+        String[] bogieIdsSorted = {"BG309","BG101","BG550","BG205","BG412"};
+        String key = "BG205";
+        java.util.Arrays.sort(bogieIdsSorted);
+        System.out.println("\nSorted Bogie IDs:");
+        System.out.println(java.util.Arrays.toString(bogieIdsSorted));
+        int low = 0;
+        int high = bogieIdsSorted.length - 1;
+        boolean foundBinary = false;
+        while (low <= high) {
+            int mid = (low + high) / 2;
+            int cmp = key.compareTo(bogieIdsSorted[mid]);
+            if (cmp == 0) {
+                foundBinary = true;
+                break;
+            } else if (cmp > 0) {
+                low = mid + 1;
+            } else {
+                high = mid - 1;
+            }
+        }
+        System.out.println("\nSearching for Bogie ID: " + key);
+        if (foundBinary) {
+            System.out.println("Bogie ID found using Binary Search.");
+        } else {
+            System.out.println("Bogie ID not found.");
+        }
+
 
     }
 }
