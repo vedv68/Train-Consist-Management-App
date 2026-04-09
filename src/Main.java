@@ -367,6 +367,20 @@ if (groupedBogies.isEmpty()) {
         for (int c : capacities) {
             System.out.print(c + " ");
         }
+//===== UC17 =====
+        System.out.println("\n=== UC17: Sort Bogie Names Using Arrays.sort() ===");
+
+        String[] bogieNames = {"Sleeper","AC Chair","First Class","General","Luxury"};
+
+        System.out.println("\nOriginal Bogie Names:");
+        System.out.println(java.util.Arrays.toString(bogieNames));
+
+        java.util.Arrays.sort(bogieNames);
+
+        System.out.println("\nSorted Bogie Names (Alphabetical):");
+        System.out.println(java.util.Arrays.toString(bogieNames));
+
+
 
     }
 }
