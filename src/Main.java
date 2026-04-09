@@ -431,6 +431,29 @@ if (groupedBogies.isEmpty()) {
             System.out.println("Bogie ID not found.");
         }
 
-
+//===== UC20 =====
+        System.out.println("\n=== UC20: Exception Handling During Search Operations ===");
+        String[] bogieData = {};
+        String searchKey = "BG101";
+        try {
+            if (bogieData.length == 0) {
+                throw new IllegalStateException("No bogies available in the train. Cannot perform search.");
+            }
+            boolean foundSearch = false;
+            for (String id : bogieData) {
+                if (id.equals(searchKey)) {
+                    foundSearch = true;
+                    break;
+                }
+            }
+            System.out.println("\nSearching for Bogie ID: " + searchKey);
+            if (foundSearch) {
+                System.out.println("Bogie ID found.");
+            } else {
+                System.out.println("Bogie ID not found.");
+            }
+        } catch (IllegalStateException e) {
+            System.out.println("Error: " + e.getMessage());
+        }
     }
 }
