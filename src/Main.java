@@ -380,6 +380,27 @@ if (groupedBogies.isEmpty()) {
         System.out.println("\nSorted Bogie Names (Alphabetical):");
         System.out.println(java.util.Arrays.toString(bogieNames));
 
+//===== UC18 =====
+        System.out.println("\n=== UC18: Linear Search for Bogie ID ===");
+        String[] bogieIdsArr = {"BG101","BG205","BG309","BG412","BG550"};
+        String searchId = "BG309";
+        System.out.println("\nBogie IDs:");
+        for (String id : bogieIdsArr) {
+            System.out.print(id + " ");
+        }
+        boolean found = false;
+        for (String id : bogieIdsArr) {
+            if (id.equals(searchId)) {
+                found = true;
+                break;
+            }
+        }
+        System.out.println("\n\nSearching for Bogie ID: " + searchId);
+        if (found) {
+            System.out.println("Bogie ID found in the train consist.");
+        } else {
+            System.out.println("Bogie ID not found.");
+        }
 
 
     }
